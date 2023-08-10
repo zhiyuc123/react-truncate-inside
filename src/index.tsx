@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  useMemo,
-  useCallback,
-} from 'react';
+import * as React from 'react';
 import useCanvas from './useCanvas';
 
 export interface TruncateProps {
@@ -36,13 +30,13 @@ export interface TruncateProps {
 function Truncate(props: TruncateProps) {
   const { text, width = 0, offset = 8, ellipsis = '...' } = props;
 
-  const [targetWidth, setTargetWidth] = useState<number>(0);
-  const [shouldTruncate, setShouldTruncate] = useState<boolean>(false);
-  const [truncated, setTruncated] = useState<boolean>(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [targetWidth, setTargetWidth] = React.useState<number>(0);
+  const [shouldTruncate, setShouldTruncate] = React.useState<boolean>(false);
+  const [truncated, setTruncated] = React.useState<boolean>(false);
+  const containerRef = React.useRef<HTMLDivElement>(null);
   const canvas = useCanvas();
 
-  const setupCanvas = useCallback(() => {
+  const setupCanvas = React.useCallback(() => {
     if (!containerRef.current) return;
 
     const style = window.getComputedStyle(containerRef.current);
@@ -55,7 +49,7 @@ function Truncate(props: TruncateProps) {
     canvas.font = font;
   }, [canvas]);
 
-  const calcTargetWidth = useCallback(() => {
+  const calcTargetWidth = React.useCallback(() => {
     let targetW;
     if (width) {
       targetW = width;
@@ -68,12 +62,12 @@ function Truncate(props: TruncateProps) {
     setTruncated(true);
   }, [canvas, text, width]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setupCanvas();
     calcTargetWidth();
   }, [calcTargetWidth, setupCanvas]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const oB = new ResizeObserver((entries) => {
       if (entries.length > 0) {
         calcTargetWidth();
@@ -88,7 +82,7 @@ function Truncate(props: TruncateProps) {
     };
   }, [calcTargetWidth]);
 
-  const calculatedText = useMemo(() => {
+  const calculatedText = React.useMemo(() => {
     if (!shouldTruncate) return text;
 
     const len = text.length;

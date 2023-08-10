@@ -2,28 +2,28 @@
 
 > React component for adding an ellipsis to the middle of a line of text.
 >
-> Inspired by [pablosichert / react-truncat](https://github.com/pablosichert/react-truncat)
+> Inspired by [pablosichert / react-truncate](https://github.com/pablosichert/react-truncate)
+
+[Online Demo](https://zhiyuc123.github.io/react-truncate-inside/?path=/docs/demo--docs)
 
 ---
 
 ## Install
 
 ```bash
-yarn add react-truncate-middle
+npm install react-truncate-inside
 ```
 
 ## Usage
 
 ```jsx
 import React from 'react';
-import Truncate from 'react-truncate-middle';
+import Truncate from 'react-truncate-inside';
 
 export default function Demo() {
     return <Truncate text="An-Extremely-Long-Filename.pdf" width="100" />
 }
 ```
-
-[Online Demo](www.todo.com)
 
 ## Props
 

@@ -1,5 +1,5 @@
 {
-  "name": "react-truncate-middle",
+  "name": "react-truncate-inside",
   "version": "0.1.0",
   "description": "React component for truncating one line spans and adding an ellipsis in it.",
   "main": "lib/index.js",
@@ -11,18 +11,23 @@
     "build": "npm run build:lib ; npm run build:es",
     "storybook": "storybook dev -p 6006",
     "storybook-docs": "storybook dev --docs",
-    "build:doc": "storybook build --docs"
+    "build:doc": "storybook build --docs -o docs"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/zhiyuc123/react-truncate-inside.git"
   },
+  "bugs": {
+    "url": "https://github.com/zhiyuc123/react-truncate-inside/issues"
+  },
+  "homepage": "https://github.com/zhiyuc123/react-truncate-inside",
   "license": "MIT",
   "keywords": [
     "react",
     "truncate",
     "middle",
     "truncate-inside",
+    "truncate-middle",
     "ellipsis"
   ],
   "peerDependencies": {

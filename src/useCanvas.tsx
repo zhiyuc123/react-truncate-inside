@@ -1,7 +1,7 @@
-import { useRef } from 'react';
+import * as React from 'react';
 
 function useCanvas(): CanvasRenderingContext2D {
-  const ref = useRef<CanvasRenderingContext2D | null>(null);
+  const ref = React.useRef<CanvasRenderingContext2D | null>(null);
 
   if (ref.current) return ref.current;
 

@@ -1,20 +1,30 @@
 {
-  "name": "react-truncate-inside",
-  "version": "1.0.0",
+  "name": "react-truncate-middle",
+  "version": "0.1.0",
   "description": "React component for truncating one line spans and adding an ellipsis in it.",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typing": "es/index.d.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:lib": "babel src --out-dir lib --extensions .tsx",
     "build:es": "tsc",
     "build": "npm run build:lib ; npm run build:es",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "storybook dev -p 6006",
+    "storybook-docs": "storybook dev --docs",
+    "build:doc": "storybook build --docs"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "truncate",
+    "middle",
+    "truncate-inside",
+    "ellipsis"
+  ],
   "peerDependencies": {
     "react": ">= 16.x.x"
   },
@@ -24,25 +34,26 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.0",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-interactions": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/builder-webpack4": "^6.5.16",
-    "@storybook/manager-webpack4": "^6.5.16",
-    "@storybook/react": "^6.5.16",
-    "@storybook/testing-library": "^0.0.13",
+    "@storybook/addon-actions": "^7.0.22",
+    "@storybook/addon-essentials": "^7.0.22",
+    "@storybook/addon-interactions": "^7.0.22",
+    "@storybook/addon-links": "^7.0.22",
+    "@storybook/react": "^7.0.22",
+    "@storybook/react-webpack5": "^7.0.22",
+    "@storybook/testing-library": "^0.2.0",
     "@types/react": "^18.0.28",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
     "babel-loader": "^8.3.0",
     "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-storybook": "^0.6.11",
+    "eslint-plugin-storybook": "^0.6.12",
+    "prettier": "2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "storybook": "^7.0.22",
     "typescript": "^4.9.5"
-  },
-  "dependencies": {}
+  }
 }

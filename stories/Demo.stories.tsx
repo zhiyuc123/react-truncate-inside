@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import Truncate from '../src';
 import './Demo.css';
@@ -10,9 +10,9 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof Truncate>;
+} as Meta<typeof Truncate>;
 
-const Template: ComponentStory<typeof Truncate> = () => {
+const Template: StoryFn<typeof Truncate> = () => {
   const [width, setWidth] = useState(250);
   return (
     <div className="container">

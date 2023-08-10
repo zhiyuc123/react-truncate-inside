@@ -4,11 +4,11 @@
     "strictNullChecks": true,
     "module": "es6",
     "jsx": "react",
-    "target": "es6",
+    "target": "es5",
     "lib": ["es6", "dom"],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "declaration": true
   },
-  "include": ["./src/", "stories"]
+  "include": ["./src/"]
 }

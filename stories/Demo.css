@@ -1,0 +1,11 @@
+.container {
+  
+}
+
+.container .wrapper {
+  padding: 0 12px;
+  height: 100px;
+  vertical-align: middle;
+  background-color: #ffedbd;
+  line-height: 100px;
+}

@@ -4,6 +4,8 @@
 >
 > Inspired by [pablosichert / react-truncate](https://github.com/pablosichert/react-truncate)
 
+![CPT2308101505-376x87](https://github.com/zhiyuc123/react-truncate-inside/assets/46096473/a8529b7c-575b-4656-8802-5b5a940c9964)
+
 [Online Demo](https://zhiyuc123.github.io/react-truncate-inside/?path=/docs/demo--docs)
 
 ---

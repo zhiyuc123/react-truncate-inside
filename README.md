@@ -1,4 +1,4 @@
-# React Truncate Middle
+# React Truncate Inside
 
 > React component for adding an ellipsis to the middle of a line of text.
 >

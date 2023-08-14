@@ -1,7 +1,7 @@
 {
   "name": "react-truncate-inside",
-  "version": "0.2.0",
-  "description": "React component for truncating one line spans and adding an ellipsis in it.",
+  "version": "1.0.2",
+  "description": "React component for adding an ellipsis to the middle of a line of text.",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typing": "es/index.d.js",

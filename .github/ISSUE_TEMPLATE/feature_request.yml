@@ -1,0 +1,31 @@
+name: Feature request
+description: Suggest a new option or behavior.
+title: '[Feature]: '
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the use case rather than the solution, so alternatives can be considered.
+      placeholder: 'I render Ethereum addresses and need the ellipsis to keep exactly 4 characters on both sides.'
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What would the API or behavior look like? A code sample of how you would use it helps.
+      render: jsx
+      placeholder: '<Truncate text={address} offset={4} />'
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you tried, other libraries, CSS-only approaches.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context

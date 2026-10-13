@@ -1,0 +1,56 @@
+# react-truncate-inside
+
+> React component that truncates text in the middle with an ellipsis, so a long string such as a file name, hash or wallet address keeps both its beginning and its end visible. Zero runtime dependencies, about 1 kB minified and gzipped, TypeScript types included, requires React 16.8 or newer.
+
+Install:
+
+```bash
+npm install react-truncate-inside
+```
+
+Core API: one default export, the `Truncate` component, plus the exported `TruncateProps` type.
+
+- `text: string` (required): the text to display.
+- `width?: number`: width of the element in px. Omit it to fill the parent and re-truncate whenever the parent is resized.
+- `offset?: number` (default `8`): number of characters kept at the end of the text; the ellipsis is inserted this many characters from the end.
+- `ellipsis?: string` (default `'...'`): string inserted where characters were removed.
+
+Example, fixed width:
+
+```jsx
+import Truncate from 'react-truncate-inside';
+
+<Truncate text="ECMA-402_9th_edition_june_2022.pdf" width={150} />
+// renders something like "ECMA-4...2022.pdf", depending on the font
+```
+
+Example, fill the parent and keep a 4-character tail (wallet address):
+
+```jsx
+<Truncate text="0x71C7656EC7ab88b098defB751B7401B5f6d8976F" offset={4} />
+// renders something like "0x71C7656E...976F"
+```
+
+Example, full text on hover. The component renders a single `div` and does not forward attributes, so put `title` on a wrapper:
+
+```jsx
+<span title={fileName}>
+  <Truncate text={fileName} width={160} />
+</span>
+```
+
+How it works: the text is measured on an off-screen canvas with the element's computed font (weight, style, size, family). If it is wider than the element, a binary search finds the longest prefix such that prefix + ellipsis + last `offset` characters fits. It re-measures when the container is resized (ResizeObserver), when `width` or `text` change, and when web fonts finish loading. Text is sliced by code point, so emoji are never split. During server rendering the full text is output and truncation happens in the browser after mount. Single line only; `letter-spacing` and `text-transform` are not reflected in measurements.
+
+## Docs
+
+- [README](https://github.com/zhiyuc123/react-truncate-inside#readme): full documentation with examples, props table, comparison and FAQ
+- [Full documentation as plain text](https://zhiyuc123.github.io/react-truncate-inside/llms-full.txt): API reference, examples, comparison and FAQ in one file
+- [Documentation site](https://zhiyuc123.github.io/react-truncate-inside/): the same content as a static HTML page
+- [README in Chinese](https://github.com/zhiyuc123/react-truncate-inside/blob/main/README.zh-CN.md): 简体中文文档
+
+## Links
+
+- [Online demo](https://zhiyuc123.github.io/react-truncate-inside/storybook/?path=/docs/demo--docs): interactive Storybook demo with a resizable container (needs JavaScript)
+- [npm package](https://www.npmjs.com/package/react-truncate-inside): releases and install
+- [Source code](https://github.com/zhiyuc123/react-truncate-inside): GitHub repository, MIT license
+- [Issues](https://github.com/zhiyuc123/react-truncate-inside/issues): bug reports and feature requests

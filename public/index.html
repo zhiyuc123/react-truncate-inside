@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>react-truncate-inside: truncate text in the middle with an ellipsis in React</title>
+    <meta
+      name="description"
+      content="React component that truncates text in the middle with an ellipsis, so a long string such as a file name, hash or wallet address keeps both its beginning and its end visible."
+    />
+    <link rel="canonical" href="https://zhiyuc123.github.io/react-truncate-inside/" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230969da'/%3E%3Ctext x='32' y='46' font-size='44' font-weight='bold' text-anchor='middle' fill='white' font-family='sans-serif'%3E...%3C/text%3E%3C/svg%3E" />
+    <link rel="alternate" type="text/plain" href="https://zhiyuc123.github.io/react-truncate-inside/llms.txt" title="llms.txt" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "react-truncate-inside",
+        "description": "React component that truncates text in the middle with an ellipsis, so a long string such as a file name, hash or wallet address keeps both its beginning and its end visible.",
+        "url": "https://zhiyuc123.github.io/react-truncate-inside/",
+        "codeRepository": "https://github.com/zhiyuc123/react-truncate-inside",
+        "programmingLanguage": ["TypeScript", "JavaScript"],
+        "runtimePlatform": "React",
+        "license": "https://opensource.org/licenses/MIT",
+        "author": { "@type": "Person", "name": "zhiyuc123" },
+        "keywords": "react, react-component, truncate, truncate-text, truncate-middle, middle-truncation, middle-ellipsis, ellipsis, text-overflow, filename",
+        "sameAs": ["https://www.npmjs.com/package/react-truncate-inside"]
+      }
+    </script>
+    <!-- Google tag (gtag.js). Optional: the page is fully readable without it. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ30XN1Q55"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-TQ30XN1Q55');
+    </script>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --fg: #1f2328;
+        --muted: #59636e;
+        --border: #d1d9e0;
+        --code-bg: #f6f8fa;
+        --link: #0969da;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fg: #e6edf3;
+          --muted: #9198a1;
+          --border: #3d444d;
+          --code-bg: #161b22;
+          --link: #4493f8;
+        }
+      }
+      body {
+        margin: 0 auto;
+        max-width: 56rem;
+        padding: 1.5rem 1rem 4rem;
+        font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        color: var(--fg);
+      }
+      h1 { font-size: 2rem; margin: 0 0 0.5rem; }
+      h2 { margin-top: 2.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
+      h3 { margin-top: 1.5rem; }
+      a { color: var(--link); }
+      p.lead { font-size: 1.125rem; }
+      nav ul { padding-left: 1.2rem; }
+      code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; }
+      code { background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 4px; }
+      pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; }
+      pre code { background: none; padding: 0; }
+      table { border-collapse: collapse; width: 100%; margin: 1rem 0; display: block; overflow-x: auto; }
+      th, td { border: 1px solid var(--border); padding: 0.4rem 0.7rem; text-align: left; vertical-align: top; }
+      th { background: var(--code-bg); }
+      footer { margin-top: 3rem; color: var(--muted); font-size: 0.9rem; }
+      img.demo { max-width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>react-truncate-inside</h1>
+      <p class="lead">
+        <strong>react-truncate-inside</strong> is a React component that truncates text in the middle with an ellipsis, so a long string such as a file name, hash or wallet address keeps both its beginning and its end visible. The middle ellipsis is placed by measuring the real rendered width, and it is recomputed when the container resizes.
+      </p>
+      <p>
+        <img
+          class="demo"
+          src="https://github.com/zhiyuc123/react-truncate-inside/assets/46096473/a8529b7c-575b-4656-8802-5b5a940c9964"
+          alt="react-truncate-inside demo: a file name truncated in the middle as its container is resized"
+          width="376"
+          height="87"
+        />
+      </p>
+      <nav aria-label="Project links">
+        <ul>
+          <li><a href="./storybook/?path=/docs/demo--docs">Interactive demo</a> (Storybook, needs JavaScript)</li>
+          <li><a href="https://www.npmjs.com/package/react-truncate-inside">npm package</a></li>
+          <li><a href="https://github.com/zhiyuc123/react-truncate-inside">Source on GitHub</a> (MIT license)</li>
+          <li><a href="https://github.com/zhiyuc123/react-truncate-inside/blob/main/README.zh-CN.md">README in Chinese (简体中文)</a></li>
+          <li><a href="./llms.txt">llms.txt</a> and <a href="./llms-full.txt">llms-full.txt</a> for language models</li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="features">
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Middle truncation.</strong> Keeps the start of the text and the last <code>offset</code> characters (default 8), and replaces the overflow in between with <code>ellipsis</code> (default <code>...</code>).</li>
+          <li><strong>Measures the real width.</strong> Text is measured on an off-screen canvas using the element's computed font (weight, style, size, family), so the result fits the actual rendered width instead of a character count.</li>
+          <li><strong>Responsive.</strong> Re-truncates when the container is resized (<code>ResizeObserver</code>), when the <code>width</code> or <code>text</code> props change, and when web fonts finish loading.</li>
+          <li><strong>Unicode-safe.</strong> Text is sliced by code point, so emoji and other surrogate pairs are never cut in half.</li>
+          <li><strong>Server rendering safe.</strong> Nothing touches <code>document</code> or <code>window</code> during render; the server outputs the full text and the browser truncates it after mount.</li>
+          <li><strong>TypeScript.</strong> Ships type declarations, including the exported <code>TruncateProps</code> interface.</li>
+          <li><strong>Tiny.</strong> Zero runtime dependencies, about 1 kB minified and gzipped, published as both CommonJS and ES modules. Requires React 16.8 or newer (hooks).</li>
+        </ul>
+      </section>
+
+      <section id="when-to-use">
+        <h2>When to use</h2>
+        <p>Use middle truncation whenever the end of a string carries information: an extension, a checksum suffix, the last characters that tell two similar values apart. The number of characters kept at the end is set with <code>offset</code>; how many characters of the start survive depends on the available width.</p>
+        <table>
+          <thead>
+            <tr><th>Use case</th><th>Original</th><th>Truncated</th><th><code>offset</code></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>File names</td><td><code>ECMA-402_9th_edition_june_2022.pdf</code></td><td><code>ECMA-402_9th...2022.pdf</code></td><td>8</td></tr>
+            <tr><td>Hashes</td><td><code>a94a8fe5ccb19ba61c4c0873d391e987982fbbd3</code></td><td><code>a94a8fe5cc...2fbbd3</code></td><td>6</td></tr>
+            <tr><td>Wallet addresses</td><td><code>0x71C7656EC7ab88b098defB751B7401B5f6d8976F</code></td><td><code>0x71C7656E...976F</code></td><td>4</td></tr>
+            <tr><td>URLs</td><td><code>https://example.com/docs/guides/getting-started/installation</code></td><td><code>https://example.com/do...installation</code></td><td>12</td></tr>
+            <tr><td>File paths</td><td><code>/Users/alice/Projects/client/src/components/Header.tsx</code></td><td><code>/Users/alice/Proj...Header.tsx</code></td><td>10</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="install">
+        <h2>Install</h2>
+        <pre><code>npm install react-truncate-inside
+# or
+yarn add react-truncate-inside
+# or
+pnpm add react-truncate-inside</code></pre>
+      </section>
+
+      <section id="quick-start">
+        <h2>Quick start</h2>
+        <pre><code>import React from 'react';
+import Truncate from 'react-truncate-inside';
+
+export default function Demo() {
+  return &lt;Truncate text="An-Extremely-Long-Filename.pdf" width={100} /&gt;;
+}</code></pre>
+        <p>Renders a 100 px wide element containing something like <code>An-...name.pdf</code>; how many leading characters survive depends on the font.</p>
+      </section>
+
+      <section id="examples">
+        <h2>Examples</h2>
+
+        <h3>TypeScript</h3>
+        <p>The default export is typed, and the props interface is exported as <code>TruncateProps</code>.</p>
+        <pre><code>import React from 'react';
+import Truncate from 'react-truncate-inside';
+import type { TruncateProps } from 'react-truncate-inside';
+
+type FileNameProps = Pick&lt;TruncateProps, 'width'&gt; &amp; { name: string };
+
+export function FileName({ name, width }: FileNameProps) {
+  // Keep the extension plus a few characters in front of it.
+  return &lt;Truncate text={name} width={width} offset={8} /&gt;;
+}</code></pre>
+
+        <h3>Fill the parent and follow its width</h3>
+        <p>Omit <code>width</code> and the element takes the full width of its parent. A <code>ResizeObserver</code> re-truncates the text whenever that width changes, for example when a sidebar is dragged or the window is resized.</p>
+        <pre><code>function Sidebar({ fileName }) {
+  return (
+    &lt;aside style={{ width: '20vw' }}&gt;
+      &lt;Truncate text={fileName} /&gt;
+    &lt;/aside&gt;
+  );
+}</code></pre>
+
+        <h3>Show the full text on hover</h3>
+        <p>The component renders a single <code>div</code> and does not forward extra attributes, so put the <code>title</code> on a wrapper element.</p>
+        <pre><code>function FileLabel({ fileName }) {
+  return (
+    &lt;span title={fileName}&gt;
+      &lt;Truncate text={fileName} width={160} /&gt;
+    &lt;/span&gt;
+  );
+}</code></pre>
+
+        <h3>In a table cell</h3>
+        <p>Give the column a width (or use <code>table-layout: fixed</code>). With automatic table layout the cell grows to fit the full text, so there is nothing to truncate.</p>
+        <pre><code>function FileTable({ files }) {
+  return (
+    &lt;table style={{ tableLayout: 'fixed', width: '100%' }}&gt;
+      &lt;colgroup&gt;
+        &lt;col style={{ width: '60%' }} /&gt;
+        &lt;col style={{ width: '40%' }} /&gt;
+      &lt;/colgroup&gt;
+      &lt;tbody&gt;
+        {files.map((file) =&gt; (
+          &lt;tr key={file.id}&gt;
+            &lt;td&gt;
+              &lt;Truncate text={file.name} /&gt;
+            &lt;/td&gt;
+            &lt;td&gt;{file.size}&lt;/td&gt;
+          &lt;/tr&gt;
+        ))}
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  );
+}</code></pre>
+      </section>
+
+      <section id="props">
+        <h2>Props</h2>
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>text</code></td><td><code>string</code></td><td>required</td><td>The text to display.</td></tr>
+            <tr><td><code>width</code></td><td><code>number</code></td><td>parent width (<code>100%</code>)</td><td>Width of the element in px. When omitted the element fills its parent and re-truncates whenever the parent is resized.</td></tr>
+            <tr><td><code>offset</code></td><td><code>number</code></td><td><code>8</code></td><td>Number of characters kept at the end of the text. The ellipsis is inserted this many characters from the end.</td></tr>
+            <tr><td><code>ellipsis</code></td><td><code>string</code></td><td><code>'...'</code></td><td>String inserted where characters were removed. Only present when the text is actually truncated.</td></tr>
+          </tbody>
+        </table>
+        <p>The component renders <code>&lt;div style="width: &lt;width&gt;px or 100%; white-space: nowrap"&gt;</code> with the (possibly truncated) text as its only child.</p>
+      </section>
+
+      <section id="how-it-works">
+        <h2>How it works</h2>
+        <p>The component renders the text in a <code>div</code> with <code>white-space: nowrap</code> and measures it with an off-screen <code>&lt;canvas&gt;</code> 2D context whose <code>font</code> is set to the element's computed font. If the text is wider than the element, a binary search finds the longest prefix such that <code>prefix + ellipsis + last offset characters</code> still fits. It measures again whenever the element is resized, the <code>width</code> or <code>text</code> props change, or <code>document.fonts</code> reports that web fonts have finished loading.</p>
+        <p>Limitations worth knowing:</p>
+        <ul>
+          <li>Single line only. Multi-line clamping is out of scope.</li>
+          <li>The canvas measurement uses <code>font-weight</code>, <code>font-style</code>, <code>font-size</code> and <code>font-family</code>. <code>letter-spacing</code> and <code>text-transform</code> on the element are not taken into account.</li>
+          <li>If the element is narrower than one character plus the ellipsis plus the <code>offset</code> tail, that minimal form is rendered and overflows; the element does not set <code>overflow: hidden</code>.</li>
+          <li>When <code>ResizeObserver</code> is not available the component still renders and truncates on mount and on prop changes, but it does not react to container resizes.</li>
+        </ul>
+      </section>
+
+      <section id="comparison">
+        <h2>Comparison</h2>
+        <table>
+          <thead>
+            <tr><th>Approach</th><th>Ellipsis position</th><th>Adapts to width</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>react-truncate-inside</code></td><td>Middle, keeping the last <code>offset</code> characters</td><td>Yes (<code>ResizeObserver</code>)</td><td>Single line only. About 1 kB, zero dependencies, TypeScript types included.</td></tr>
+            <tr><td>CSS <code>text-overflow: ellipsis</code></td><td>End only (or start, with <code>direction: rtl</code>)</td><td>Yes, natively</td><td>No JavaScript, works with any font feature. The right choice when hiding the end of the text is acceptable.</td></tr>
+            <tr><td><code>react-truncate</code></td><td>End; can clamp to several lines</td><td>Yes</td><td>Covers multi-line "read more" style truncation, which this library does not do.</td></tr>
+            <tr><td>Hand-written measuring code</td><td>Anywhere you choose</td><td>If you implement it</td><td>Full control. You handle font measurement, resize, web font loading, code points and server rendering yourself.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="faq">
+        <h2>FAQ</h2>
+
+        <h3>Why not just use CSS <code>text-overflow: ellipsis</code>?</h3>
+        <p>Because CSS can only put the ellipsis at the end of the text (or at the start with <code>direction: rtl</code>); there is no middle position, so a file extension or the end of an address is the first thing to disappear. Use CSS when the end of the text is not important, and a middle truncation component when it is.</p>
+
+        <h3>Does it update when the container resizes?</h3>
+        <p>Yes. The element observes its own size with a <code>ResizeObserver</code> and re-truncates whenever the width changes, including when the parent is resized by a drag handle or a window resize. Changing the <code>width</code> or <code>text</code> props also triggers a new measurement.</p>
+
+        <h3>Does it work with SSR / Next.js?</h3>
+        <p>Yes. During server rendering the component outputs the full text and does not touch <code>document</code> or <code>window</code>; the truncation is computed in the browser in a layout effect right after mount, before the first paint. No dynamic import or <code>ssr: false</code> is needed.</p>
+
+        <h3>Can I keep the file extension visible?</h3>
+        <p>Yes, that is what <code>offset</code> is for: it is the number of characters kept at the end of the text, 8 by default. For <code>.pdf</code> or <code>.png</code> files the default already keeps the extension plus four characters in front of it; raise it for longer extensions such as <code>.tar.gz</code> or when the end of the string needs more context.</p>
+
+        <h3>Why is my text not truncated inside a table?</h3>
+        <p>Because with automatic table layout the cell expands to fit the full text, so the element never overflows. Set <code>table-layout: fixed</code> and give the column a width, or put the component in a cell with an explicit <code>max-width</code>.</p>
+
+        <h3>Does it support multiple lines?</h3>
+        <p>No. The component is single-line (<code>white-space: nowrap</code>). For multi-line clamping with an ellipsis at the end, use CSS <code>-webkit-line-clamp</code> or a library such as <code>react-truncate</code>.</p>
+      </section>
+
+      <section id="license">
+        <h2>License</h2>
+        <p>MIT License. Author: zhiyuc123.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>This page is a static copy of the project <a href="https://github.com/zhiyuc123/react-truncate-inside#readme">README</a>; all content is readable without JavaScript. The <a href="./storybook/?path=/docs/demo--docs">interactive demo</a> runs in Storybook.</p>
+    </footer>
+  </body>
+</html>

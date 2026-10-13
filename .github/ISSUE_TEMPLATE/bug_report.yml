@@ -1,0 +1,54 @@
+name: Bug report
+description: Something renders wrong, throws, or behaves differently than documented.
+title: '[Bug]: '
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a problem. A small reproduction makes it much faster to fix.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What did you see, and what did you expect to see instead?
+      placeholder: 'The text "..." is rendered as "..." in a 150px container, but I expected "...".'
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: A minimal code snippet, or a link to a CodeSandbox / StackBlitz / repository that shows the problem.
+      render: jsx
+      placeholder: |
+        <div style={{ width: 150 }}>
+          <Truncate text="ECMA-402_9th_edition_june_2022.pdf" />
+        </div>
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: react-truncate-inside version
+      placeholder: '1.0.3'
+    validations:
+      required: true
+  - type: input
+    id: react-version
+    attributes:
+      label: React version
+      placeholder: '18.2.0'
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser / environment
+      description: Browser and version, and whether server-side rendering (e.g. Next.js) or a test runner (e.g. jsdom) is involved.
+      placeholder: 'Chrome 130 on macOS; rendered with Next.js 15'
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Fonts, CSS on the parent (flex, table, letter-spacing), screenshots, console output.

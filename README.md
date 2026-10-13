@@ -11,7 +11,7 @@ English | [简体中文](./README.zh-CN.md)
 
 ![react-truncate-inside demo: a file name truncated in the middle as its container is resized](https://github.com/zhiyuc123/react-truncate-inside/assets/46096473/a8529b7c-575b-4656-8802-5b5a940c9964)
 
-[Online Demo](https://zhiyuc123.github.io/react-truncate-inside/?path=/docs/demo--docs)
+[Online Demo](https://zhiyuc123.github.io/react-truncate-inside/storybook/?path=/docs/demo--docs) · [Documentation site](https://zhiyuc123.github.io/react-truncate-inside/)
 
 > Inspired by [pablosichert/react-truncate](https://github.com/pablosichert/react-truncate), which truncates at the end of the text.
 

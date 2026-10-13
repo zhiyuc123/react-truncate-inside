@@ -11,7 +11,7 @@
 
 ![react-truncate-inside 演示：容器宽度变化时文件名在中间被截断](https://github.com/zhiyuc123/react-truncate-inside/assets/46096473/a8529b7c-575b-4656-8802-5b5a940c9964)
 
-[在线 Demo](https://zhiyuc123.github.io/react-truncate-inside/?path=/docs/demo--docs)
+[在线 Demo](https://zhiyuc123.github.io/react-truncate-inside/storybook/?path=/docs/demo--docs) · [文档站](https://zhiyuc123.github.io/react-truncate-inside/)
 
 > 灵感来自 [pablosichert/react-truncate](https://github.com/pablosichert/react-truncate)，它做的是末尾截断。
 

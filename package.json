@@ -12,7 +12,8 @@
     "test": "vitest run",
     "storybook": "storybook dev -p 6006",
     "storybook-docs": "storybook dev --docs",
-    "build:doc": "storybook build --docs -o docs"
+    "build:doc": "storybook build --docs -o storybook-static",
+    "build:site": "npm run build:doc && rm -rf _site && mkdir -p _site/storybook && cp -R public/. _site/ && cp -R storybook-static/. _site/storybook/"
   },
   "repository": {
     "type": "git",

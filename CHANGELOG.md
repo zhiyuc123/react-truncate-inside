@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-13
+
 ### Fixed
 
 - Text with `offset` greater than or equal to its length no longer gets duplicated characters (for example `a.pdf` used to become `a...pdf`). The text is returned unchanged when nothing in the middle can be removed, and the forced one-character form (`E...2022.pdf`) is only used when it is narrower than the original text.
@@ -47,7 +49,7 @@ All notable changes to this project are documented here. The format follows
 
 ## [1.0.1] - 2023-08-14
 
-There is no 1.0.0 release; the version went from 0.2.0 directly to 1.0.1.
+There is no 1.0.0 release; the version went from 0.2.0 directly to 1.0.1. This version was tagged in git but not published to npm.
 
 ### Changed
 
@@ -60,13 +62,16 @@ There is no 1.0.0 release; the version went from 0.2.0 directly to 1.0.1.
 
 ## [0.1.0] - 2023-08-10
 
+Tagged in git but not published to npm; 0.2.0 is the first version on npm.
+
 ### Added
 
 - Initial release of the `Truncate` component with the `text`, `width`, `offset` and `ellipsis` props. Text is measured on an off-screen canvas using the element's computed font and truncated in the middle with a binary search; the element is observed with `ResizeObserver` and re-truncated when its width changes.
 - Storybook with a basic story and a demo page, published to GitHub Pages.
 - GitHub Actions workflow that publishes the package to npm when a release is created.
 
-[Unreleased]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.0.3...HEAD
+[Unreleased]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.0.3...1.1.0
 [1.0.3]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/zhiyuc123/react-truncate-inside/compare/0.2.0...1.0.1

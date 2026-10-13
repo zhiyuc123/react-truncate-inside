@@ -1,6 +1,6 @@
 {
   "name": "react-truncate-inside",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "React component that truncates text in the middle with an ellipsis, so a long string such as a file name, hash or wallet address keeps both its beginning and its end visible.",
   "main": "lib/index.js",
   "module": "es/index.js",

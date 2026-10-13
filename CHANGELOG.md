@@ -70,8 +70,8 @@ Tagged in git but not published to npm; 0.2.0 is the first version on npm.
 - Storybook with a basic story and a demo page, published to GitHub Pages.
 - GitHub Actions workflow that publishes the package to npm when a release is created.
 
-[Unreleased]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.1.0...HEAD
-[1.1.0]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.0.3...1.1.0
+[Unreleased]: https://github.com/zhiyuc123/react-truncate-inside/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.0.3...v1.1.0
 [1.0.3]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/zhiyuc123/react-truncate-inside/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/zhiyuc123/react-truncate-inside/compare/0.2.0...1.0.1

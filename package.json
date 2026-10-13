@@ -1,7 +1,7 @@
 {
   "name": "react-truncate-inside",
   "version": "1.0.3",
-  "description": "React component for adding an ellipsis to the middle of a line of text.",
+  "description": "React component that truncates text in the middle with an ellipsis, so a long string such as a file name, hash or wallet address keeps both its beginning and its end visible.",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
@@ -23,13 +23,19 @@
   },
   "homepage": "https://github.com/zhiyuc123/react-truncate-inside",
   "license": "MIT",
+  "author": "zhiyuc123",
   "keywords": [
     "react",
+    "react-component",
     "truncate",
-    "middle",
-    "truncate-inside",
+    "truncate-text",
     "truncate-middle",
-    "ellipsis"
+    "truncate-inside",
+    "middle-truncation",
+    "middle-ellipsis",
+    "ellipsis",
+    "text-overflow",
+    "filename"
   ],
   "peerDependencies": {
     "react": ">=16.8.0"

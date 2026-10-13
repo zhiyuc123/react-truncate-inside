@@ -23,7 +23,7 @@ import React from 'react';
 import Truncate from 'react-truncate-inside';
 
 export default function Demo() {
-    return <Truncate text="An-Extremely-Long-Filename.pdf" width="100" />
+  return <Truncate text="An-Extremely-Long-Filename.pdf" width={100} />;
 }
 ```
 

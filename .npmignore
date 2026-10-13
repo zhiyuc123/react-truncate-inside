@@ -3,3 +3,5 @@ stories
 storybook-static
 node_modules
 src
+tests
+vitest.config.mts

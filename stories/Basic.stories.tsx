@@ -6,9 +6,6 @@ import Truncate from '../src';
 export default {
   title: 'Truncate',
   component: Truncate,
-  parameters: {
-    // layout: 'fullscreen',
-  },
   argTypes: {
     width: {
       table: {

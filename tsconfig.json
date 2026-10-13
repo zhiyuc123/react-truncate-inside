@@ -6,6 +6,7 @@
     "jsx": "react",
     "target": "es5",
     "lib": ["es6", "dom"],
+    "types": [],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "declaration": true

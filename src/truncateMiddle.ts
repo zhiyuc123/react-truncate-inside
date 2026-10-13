@@ -38,6 +38,8 @@ export function truncateMiddle(
   const tailLength = Math.min(Math.max(offset, 0), chars.length);
   const tailStart = chars.length - tailLength;
   // The whole text is "tail": there is nothing in the middle to remove.
+  // (The width check at the end would reject every candidate anyway; this
+  // just makes the case explicit and skips the search.)
   if (tailStart === 0) return text;
 
   const tail = chars.slice(tailStart).join('');

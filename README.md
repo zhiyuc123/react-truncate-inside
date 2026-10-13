@@ -1,22 +1,55 @@
-# React Truncate Inside
+# react-truncate-inside
 
-> React component for adding an ellipsis to the middle of a line of text.
->
-> Inspired by [pablosichert / react-truncate](https://github.com/pablosichert/react-truncate)
+English | [简体中文](./README.zh-CN.md)
 
-![CPT2308101505-376x87](https://github.com/zhiyuc123/react-truncate-inside/assets/46096473/a8529b7c-575b-4656-8802-5b5a940c9964)
+**react-truncate-inside** is a React component that truncates text in the middle with an ellipsis, so a long string such as a file name, hash or wallet address keeps both its beginning and its end visible. The middle ellipsis is placed by measuring the real rendered width, and it is recomputed when the container resizes.
+
+[![npm version](https://img.shields.io/npm/v/react-truncate-inside.svg)](https://www.npmjs.com/package/react-truncate-inside)
+[![npm downloads](https://img.shields.io/npm/dm/react-truncate-inside.svg)](https://www.npmjs.com/package/react-truncate-inside)
+[![license](https://img.shields.io/npm/l/react-truncate-inside.svg)](#license)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/react-truncate-inside)](https://bundlephobia.com/package/react-truncate-inside)
+
+![react-truncate-inside demo: a file name truncated in the middle as its container is resized](https://github.com/zhiyuc123/react-truncate-inside/assets/46096473/a8529b7c-575b-4656-8802-5b5a940c9964)
 
 [Online Demo](https://zhiyuc123.github.io/react-truncate-inside/?path=/docs/demo--docs)
 
+> Inspired by [pablosichert/react-truncate](https://github.com/pablosichert/react-truncate), which truncates at the end of the text.
+
 ---
+
+## Features
+
+- **Middle truncation.** Keeps the start of the text and the last `offset` characters (default 8), and replaces the overflow in between with `ellipsis` (default `...`).
+- **Measures the real width.** Text is measured on an off-screen canvas using the element's computed font (weight, style, size, family), so the result fits the actual rendered width instead of a character count.
+- **Responsive.** Re-truncates when the container is resized (`ResizeObserver`), when the `width` or `text` props change, and when web fonts finish loading.
+- **Unicode-safe.** Text is sliced by code point, so emoji and other surrogate pairs are never cut in half.
+- **Server rendering safe.** Nothing touches `document` or `window` during render; the server outputs the full text and the browser truncates it after mount.
+- **TypeScript.** Ships type declarations, including the exported `TruncateProps` interface.
+- **Tiny.** Zero runtime dependencies, about 1 kB minified and gzipped, published as both CommonJS and ES modules. Requires React 16.8 or newer (hooks).
+
+## When to use
+
+Use middle truncation whenever the end of a string carries information: an extension, a checksum suffix, the last characters that tell two similar values apart. The number of characters kept at the end is set with `offset`; how many characters of the start survive depends on the available width.
+
+| Use case         | Original                                                       | Truncated                               | `offset` |
+| ---------------- | -------------------------------------------------------------- | --------------------------------------- | -------- |
+| File names       | `ECMA-402_9th_edition_june_2022.pdf`                           | `ECMA-402_9th...2022.pdf`               | `8`      |
+| Hashes           | `a94a8fe5ccb19ba61c4c0873d391e987982fbbd3`                     | `a94a8fe5cc...2fbbd3`                   | `6`      |
+| Wallet addresses | `0x71C7656EC7ab88b098defB751B7401B5f6d8976F`                   | `0x71C7656E...976F`                     | `4`      |
+| URLs             | `https://example.com/docs/guides/getting-started/installation` | `https://example.com/do...installation` | `12`     |
+| File paths       | `/Users/alice/Projects/client/src/components/Header.tsx`       | `/Users/alice/Proj...Header.tsx`        | `10`     |
 
 ## Install
 
 ```bash
 npm install react-truncate-inside
+# or
+yarn add react-truncate-inside
+# or
+pnpm add react-truncate-inside
 ```
 
-## Usage
+## Quick start
 
 ```jsx
 import React from 'react';
@@ -27,14 +60,138 @@ export default function Demo() {
 }
 ```
 
+Renders a 100 px wide element containing something like `An-...name.pdf`; how many leading characters survive depends on the font.
+
+## Examples
+
+### TypeScript
+
+The default export is typed, and the props interface is exported as `TruncateProps`.
+
+```tsx
+import React from 'react';
+import Truncate from 'react-truncate-inside';
+import type { TruncateProps } from 'react-truncate-inside';
+
+type FileNameProps = Pick<TruncateProps, 'width'> & { name: string };
+
+export function FileName({ name, width }: FileNameProps) {
+  // Keep the extension plus a few characters in front of it.
+  return <Truncate text={name} width={width} offset={8} />;
+}
+```
+
+### Fill the parent and follow its width
+
+Omit `width` and the element takes the full width of its parent. A `ResizeObserver` re-truncates the text whenever that width changes, for example when a sidebar is dragged or the window is resized.
+
+```jsx
+function Sidebar({ fileName }) {
+  return (
+    <aside style={{ width: '20vw' }}>
+      <Truncate text={fileName} />
+    </aside>
+  );
+}
+```
+
+### Show the full text on hover
+
+The component renders a single `div` and does not forward extra attributes, so put the `title` on a wrapper element.
+
+```jsx
+function FileLabel({ fileName }) {
+  return (
+    <span title={fileName}>
+      <Truncate text={fileName} width={160} />
+    </span>
+  );
+}
+```
+
+### In a table cell
+
+Give the column a width (or use `table-layout: fixed`). With automatic table layout the cell grows to fit the full text, so there is nothing to truncate.
+
+```jsx
+function FileTable({ files }) {
+  return (
+    <table style={{ tableLayout: 'fixed', width: '100%' }}>
+      <colgroup>
+        <col style={{ width: '60%' }} />
+        <col style={{ width: '40%' }} />
+      </colgroup>
+      <tbody>
+        {files.map((file) => (
+          <tr key={file.id}>
+            <td>
+              <Truncate text={file.name} />
+            </td>
+            <td>{file.size}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+```
+
 ## Props
 
-| Name     | Type       | Desc                                                         | Default              |
-| -------- | ---------- | ------------------------------------------------------------ | -------------------- |
-| text     | `string` |                                                              |                      |
-| width    | `number` | Width of the element                                         | `parentNode.width` |
-| offset   | `number` | Position(from the end) of the ellipsis that shows in text    | `8`                |
-| ellipsis | `string` | Ellipsis that is added into the text in case it is truncated | `'...'`            |
+| Name       | Type     | Default               | Description                                                                                                            |
+| ---------- | -------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `text`     | `string` | required              | The text to display.                                                                                                   |
+| `width`    | `number` | parent width (`100%`) | Width of the element in px. When omitted the element fills its parent and re-truncates whenever the parent is resized. |
+| `offset`   | `number` | `8`                   | Number of characters kept at the end of the text. The ellipsis is inserted this many characters from the end.          |
+| `ellipsis` | `string` | `'...'`               | String inserted where characters were removed. Only present when the text is actually truncated.                       |
+
+The component renders `<div style="width: <width>px or 100%; white-space: nowrap">` with the (possibly truncated) text as its only child.
+
+## How it works
+
+The component renders the text in a `div` with `white-space: nowrap` and measures it with an off-screen `<canvas>` 2D context whose `font` is set to the element's computed font. If the text is wider than the element, a binary search finds the longest prefix such that `prefix + ellipsis + last offset characters` still fits. It measures again whenever the element is resized, the `width` or `text` props change, or `document.fonts` reports that web fonts have finished loading.
+
+Limitations worth knowing:
+
+- Single line only. Multi-line clamping is out of scope.
+- The canvas measurement uses `font-weight`, `font-style`, `font-size` and `font-family`. `letter-spacing` and `text-transform` on the element are not taken into account.
+- If the element is narrower than one character plus the ellipsis plus the `offset` tail, that minimal form is rendered and overflows; the element does not set `overflow: hidden`.
+- When `ResizeObserver` is not available the component still renders and truncates on mount and on prop changes, but it does not react to container resizes.
+
+## Comparison
+
+| Approach                      | Ellipsis position                            | Adapts to width        | Notes                                                                                                           |
+| ----------------------------- | -------------------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `react-truncate-inside`       | Middle, keeping the last `offset` characters | Yes (`ResizeObserver`) | Single line only. About 1 kB, zero dependencies, TypeScript types included.                                     |
+| CSS `text-overflow: ellipsis` | End only (or start, with `direction: rtl`)   | Yes, natively          | No JavaScript, works with any font feature. The right choice when hiding the end of the text is acceptable.     |
+| `react-truncate`              | End; can clamp to several lines              | Yes                    | Covers multi-line "read more" style truncation, which this library does not do.                                 |
+| Hand-written measuring code   | Anywhere you choose                          | If you implement it    | Full control. You handle font measurement, resize, web font loading, code points and server rendering yourself. |
+
+## FAQ
+
+### Why not just use CSS `text-overflow: ellipsis`?
+
+Because CSS can only put the ellipsis at the end of the text (or at the start with `direction: rtl`); there is no middle position, so a file extension or the end of an address is the first thing to disappear. Use CSS when the end of the text is not important, and a middle truncation component when it is.
+
+### Does it update when the container resizes?
+
+Yes. The element observes its own size with a `ResizeObserver` and re-truncates whenever the width changes, including when the parent is resized by a drag handle or a window resize. Changing the `width` or `text` props also triggers a new measurement.
+
+### Does it work with SSR / Next.js?
+
+Yes. During server rendering the component outputs the full text and does not touch `document` or `window`; the truncation is computed in the browser in a layout effect right after mount, before the first paint. No dynamic import or `ssr: false` is needed.
+
+### Can I keep the file extension visible?
+
+Yes, that is what `offset` is for: it is the number of characters kept at the end of the text, 8 by default. For `.pdf` or `.png` files the default already keeps the extension plus four characters in front of it; raise it for longer extensions such as `.tar.gz` or when the end of the string needs more context.
+
+### Why is my text not truncated inside a table?
+
+Because with automatic table layout the cell expands to fit the full text, so the element never overflows. Set `table-layout: fixed` and give the column a width, or put the component in a cell with an explicit `max-width`.
+
+### Does it support multiple lines?
+
+No. The component is single-line (`white-space: nowrap`). For multi-line clamping with an ellipsis at the end, use CSS `-webkit-line-clamp` or a library such as `react-truncate`.
 
 ## License
 

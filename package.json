@@ -4,11 +4,11 @@
   "description": "React component for adding an ellipsis to the middle of a line of text.",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "typings": "es/index.d.js",
+  "types": "es/index.d.ts",
   "scripts": {
-    "build:lib": "babel src --out-dir lib --extensions .tsx",
+    "build:lib": "babel src --out-dir lib --extensions .ts,.tsx",
     "build:es": "tsc",
-    "build": "npm run build:lib ; npm run build:es",
+    "build": "npm run build:lib && npm run build:es",
     "storybook": "storybook dev -p 6006",
     "storybook-docs": "storybook dev --docs",
     "build:doc": "storybook build --docs -o docs"
@@ -31,7 +31,7 @@
     "ellipsis"
   ],
   "peerDependencies": {
-    "react": ">= 16.x.x"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",

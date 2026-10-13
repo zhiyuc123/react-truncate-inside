@@ -5,6 +5,12 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
+  "files": [
+    "lib",
+    "es",
+    "README.zh-CN.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "build:lib": "babel src --out-dir lib --extensions .ts,.tsx",
     "build:es": "tsc",

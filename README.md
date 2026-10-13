@@ -8,6 +8,7 @@ English | [简体中文](./README.zh-CN.md)
 [![npm downloads](https://img.shields.io/npm/dm/react-truncate-inside.svg)](https://www.npmjs.com/package/react-truncate-inside)
 [![license](https://img.shields.io/npm/l/react-truncate-inside.svg)](#license)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/react-truncate-inside)](https://bundlephobia.com/package/react-truncate-inside)
+[![CI](https://github.com/zhiyuc123/react-truncate-inside/actions/workflows/ci.yml/badge.svg)](https://github.com/zhiyuc123/react-truncate-inside/actions/workflows/ci.yml)
 
 ![react-truncate-inside demo: a file name truncated in the middle as its container is resized](https://github.com/zhiyuc123/react-truncate-inside/assets/46096473/a8529b7c-575b-4656-8802-5b5a940c9964)
 
